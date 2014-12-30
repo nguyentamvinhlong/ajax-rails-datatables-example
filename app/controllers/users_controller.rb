@@ -4,9 +4,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
-    totalrecords = User.count
     start = params[:start].present? ? params[:start] : 0
     length = params[:length].present? ? params[:length] : 1
     keyword = ''
@@ -16,13 +13,15 @@ class UsersController < ApplicationController
       end
     end
     keyword = keyword.gsub(/\s+/, " ").strip
+    list_user = User.where("name LIKE '%#{keyword}%' OR phone LIKE '%#{keyword}%' OR address LIKE '%#{keyword}%'").offset(start).limit(length)
+    list_user = User.all if keyword.nil?
+    totalrecords = User.where("name LIKE '%#{keyword}%' OR phone LIKE '%#{keyword}%' OR address LIKE '%#{keyword}%'").count
     data = {}
     data[:sEcho] = 0
     data[:iTotalRecords] = totalrecords
     data[:iTotalDisplayRecords] = totalrecords
     data[:aaData] = []
-    list_user = User.where("name LIKE '%#{keyword}%' OR phone LIKE '%#{keyword}%' OR address LIKE '%#{keyword}%'").offset(start).limit(length)
-    list_user = User.all if keyword.nil?
+
     list_user.each do |user|
       data[:aaData] << ["#{user[:name]}", "#{user[:phone]}", "#{user[:address]}"]
     end
