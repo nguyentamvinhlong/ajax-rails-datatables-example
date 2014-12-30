@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Listing users</h1>
+  <h4><%= link_to 'New User', new_user_path %></h4>
+  <div class="bootstrap-table">
+    <table id="users-table" class="table table-striped table-bordered" data-source="<%= users_url(format: :json) %>">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
