@@ -15,6 +15,7 @@ class UsersController < ApplicationController
         keyword = params[:search][:value]
       end
     end
+    keyword = keyword.gsub(/\s+/, " ").strip
     data = {}
     data[:sEcho] = 0
     data[:iTotalRecords] = totalrecords
