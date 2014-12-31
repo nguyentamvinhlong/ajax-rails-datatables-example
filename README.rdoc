@@ -25,5 +25,9 @@ Things you may want to cover:
 
 Data test from http://www.mockaroo.com/
 
+Demo at https://rocky-stream-8031.herokuapp.com/
+
+If you have any questions, you contact me by email nguyentamvinhlong@gmail.com or https://twitter.com/nguyentamvn
+
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
