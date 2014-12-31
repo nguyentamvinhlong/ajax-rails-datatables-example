@@ -13,9 +13,11 @@ class UsersController < ApplicationController
       end
     end
     keyword = keyword.gsub(/\s+/, " ").strip
-    list_user = User.where("name LIKE '%#{keyword}%' OR phone LIKE '%#{keyword}%' OR address LIKE '%#{keyword}%'").offset(start).limit(length)
+    query = "name ILIKE '%{keyword}%' OR phone ILIKE '%#{keyword}%' OR address ILIKE '%#{keyword}%'"
+    list_user = User.where(query).offset(start).limit(length)
     list_user = User.all if keyword.nil?
-    totalrecords = User.where("name LIKE '%#{keyword}%' OR phone LIKE '%#{keyword}%' OR address LIKE '%#{keyword}%'").count
+    totalrecords = User.where(query).count
+    totalrecords = User.count if keyword.nil?
     data = {}
     data[:sEcho] = 0
     data[:iTotalRecords] = totalrecords
@@ -31,6 +33,7 @@ class UsersController < ApplicationController
       # format.json { render json: UserDatatable.new(view_context) }
       format.json { render json: data.to_json }
     end
+    # Rails.configuration.database_configuration[Rails.env]
   end
 
   # GET /users/1

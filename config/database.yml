@@ -13,20 +13,27 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: nguyen
-  socket: /var/run/mysqld/mysqld.sock
+  database: ajax_datatables
+  username: ajax_data
+  password: 123456
+  host: 23.91.121.8
+  # socket: /var/run/mysqld/mysqld.sock
 
 development:
-  <<: *default
-  database: datatables_dev1_development
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: ajax_datatables
+  username: ajax_data
+  password: 123456
+  host: 23.91.121.8
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: datatables_dev1_test
+  database: ajax_datatables
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -48,7 +55,28 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: datatables_dev1_production
-  username: datatables_dev1
-  password: <%= ENV['DATATABLES_DEV1_DATABASE_PASSWORD'] %>
+  adapter: mysql2
+  encoding: utf8
+  database: ajax_datatables
+  pool: 5
+  username: ajax_data
+  password: 123456
+  host: 23.91.121.8
+
+
+# heroku config:add DATABASE_URL=mysql://dbusername:dbpassword@databasehostIP:3306/databasename
+# heroku config:add SHARED_DATABASE_URL=mysql://dbusername:dbpassword@databasehostIP:3306/databasename
+# heroku config:add DATABASE_URL=mysql://ajax_data:123456@23.91.121.8:3306/ajax_datatables
+# heroku config:add SHARED_DATABASE_URL=mysql://ajax_data:123456@23.91.121.8:3306/ajax_datatables
+
+# rocky-stream-8031 :: teal
+# Connection Settings
+# Host  ec2-107-20-159-155.compute-1.amazonaws.com
+# Database  d352do5r4s040j
+# User  niagfzflolzfsp
+# Port  5432
+# Password  Hide XvbvAIwDfHUH5Fy5BCIqEZnOJY
+# Psql  heroku pg:psql --app rocky-stream-8031 HEROKU_POSTGRESQL_TEAL
+# URL   Hide postgres://niagfzflolzfsp:XvbvAIwDfHUH5Fy5BCIqEZnOJY@ec2-107-20-159-155.compute-1.amazonaws.com:5432/d352do5r4s040j
+
+# There are a variety of ways to connect to a Heroku Postgres database, find out how to do so via psql, Java, Ruby, or Node.js.

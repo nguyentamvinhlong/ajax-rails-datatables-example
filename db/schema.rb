@@ -28,4 +28,12 @@ ActiveRecord::Schema.define(version: 20141230031224) do
     t.datetime "updated_at"
   end
 
+  create_table "widgets", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "stock"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

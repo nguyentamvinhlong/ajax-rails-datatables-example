@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use mysql as the database for Active Record
@@ -49,3 +49,5 @@ gem 'jquery-datatables-rails'
 # gem 'ajax-datatables-rails', :git => "git@github.com:antillas21/ajax-datatables-rails.git", :branch => "version-0-3-0"
 # gem 'ajax-datatables-rails'
 gem 'kaminari'
+gem 'unicorn'
+gem 'pg'
